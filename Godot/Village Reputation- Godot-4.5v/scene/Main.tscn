@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://djjewe2d5n35r"]
+
+[ext_resource type="Script" uid="uid://dq1d1ifp6plu6" path="res://scripts/Player.gd" id="1_hr7lf"]
+[ext_resource type="Texture2D" uid="uid://dcwmn657t1ghp" path="res://icon.svg" id="1_nbc6x"]
+[ext_resource type="Script" uid="uid://cwujktoi1lj5r" path="res://scripts/Guard.gd" id="3_mnmej"]
+[ext_resource type="Script" uid="uid://q6uctl2rl8f2" path="res://scripts/ReputationActions.gd" id="3_yiwpq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6nst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr7lf"]
+size = Vector2(82, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnmej"]
+size = Vector2(145.5, 384)
+
+[node name="Main" type="Node2D"]
+position = Vector2(2, 4)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(67, 38)
+script = ExtResource("1_hr7lf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(82, 37)
+texture = ExtResource("1_nbc6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(59, 15)
+shape = SubResource("CircleShape2D_h6nst")
+
+[node name="Villagers" type="Area2D" parent="."]
+position = Vector2(26, 191)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Villagers"]
+position = Vector2(97, 170)
+shape = SubResource("RectangleShape2D_hr7lf")
+
+[node name="Label" type="Label" parent="Villagers"]
+offset_left = 62.0
+offset_top = 156.0
+offset_right = 128.0
+offset_bottom = 179.0
+text = "Villagers"
+
+[node name="Guard" type="Area2D" parent="."]
+position = Vector2(94, 181)
+script = ExtResource("3_mnmej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guard"]
+position = Vector2(504, -143)
+shape = SubResource("RectangleShape2D_hr7lf")
+
+[node name="Label" type="Label" parent="Guard"]
+offset_left = 480.0
+offset_top = -153.0
+offset_right = 528.0
+offset_bottom = -104.0
+text = "Guard
+"
+
+[node name="Gate Blocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate Blocker"]
+position = Vector2(871, 224)
+shape = SubResource("RectangleShape2D_mnmej")
+
+[node name="Label" type="Label" parent="Gate Blocker"]
+offset_left = 846.0
+offset_top = 210.0
+offset_right = 886.0
+offset_bottom = 233.0
+text = "Gate"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Message" type="Label" parent="HUD"]
+offset_left = 568.0
+offset_top = 69.0
+offset_right = 635.0
+offset_bottom = 92.0
+text = "Message"
+
+[node name="BtnHelp" type="Button" parent="HUD"]
+offset_left = 130.0
+offset_top = 491.0
+offset_right = 203.0
+offset_bottom = 522.0
+text = "Help"
+
+[node name="BtnDonate" type="Button" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.29900002
+anchor_top = 0.48100004
+anchor_right = 0.29900002
+anchor_bottom = 0.48100004
+offset_left = -30.448029
+offset_top = 175.31198
+offset_right = 42.55197
+offset_bottom = 206.31198
+text = "Donate"
+
+[node name="BtnLie" type="Button" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.29900002
+anchor_top = 0.48100004
+anchor_right = 0.29900002
+anchor_bottom = 0.48100004
+offset_left = 166.55197
+offset_top = 173.31198
+offset_right = 239.55197
+offset_bottom = 204.31198
+text = "Lie
+"
+
+[node name="ReputationActions" type="Node" parent="."]
+script = ExtResource("3_yiwpq")
+
+[connection signal="pressed" from="HUD/BtnHelp" to="ReputationActions" method="_on_btn_help_pressed"]
+[connection signal="pressed" from="HUD/BtnDonate" to="ReputationActions" method="_on_btn_donate_pressed"]
+[connection signal="pressed" from="HUD/BtnLie" to="ReputationActions" method="_on_btn_lie_pressed"]
