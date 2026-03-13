@@ -11,6 +11,8 @@ The game sends events, Chronos stores memory, derives NPC state, and restores th
 
 Full demo project:
 
+![Demo Scene](Godot/images/demo-scene.png)
+
 https://github.com/enginechronos/chronos-demo
 
 This repository contains the minimal Godot integration used to demonstrate persistent NPC behavior using Chronos.
