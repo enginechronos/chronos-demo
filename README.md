@@ -39,3 +39,9 @@ This repository contains the minimal Godot integration used to demonstrate persi
 
 ## Minimal SDK calls used in this demo
 
+
+```gdscript
+Chronos.append_event(...)
+Chronos.connect("npc_state_updated", self, "_on_npc_state_updated")
+Chronos.get_npc_state("guard_1") # initial load
+
