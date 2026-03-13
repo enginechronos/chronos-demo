@@ -1,9 +1,11 @@
-extends CharacterBody2D  # Fixed: Must match the node type in your scene
+extends CharacterBody2D
 
-@export var speed: float = 150.0
+@export var speed: float = 250.0
+
 
 func _ready() -> void:
 	print("PLAYER READY: script running")
+
 
 func _physics_process(_delta: float) -> void:
 	var dir := Vector2.ZERO
@@ -17,6 +19,6 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
 		dir.y -= 1.0
 
-	# Apply movement using CharacterBody2D's built-in features
-	velocity = dir.normalized() * speed
+	dir = dir.normalized()
+	velocity = dir * speed
 	move_and_slide()

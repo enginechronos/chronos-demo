@@ -3,7 +3,6 @@ extends KinematicBody2D
 export var speed := 180
 
 func _ready():
-	# Step 1: Confirm the script is running
 	print("PLAYER READY: script running")
 
 func _physics_process(_delta):
@@ -19,5 +18,4 @@ func _physics_process(_delta):
 		dir.y -= 1
 
 	dir = dir.normalized()
-
 	move_and_slide(dir * speed)
